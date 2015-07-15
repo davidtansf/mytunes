@@ -25,7 +25,10 @@
       $(function(){
         // set up model objects
         var library = new Songs(songData);
-        var app = new AppModel({library: library});
+        
+        var app = new AppModel({
+            library: library //// we are setting an object, and creating a property .library with the songData
+        });
 
         // build a view for the top level of the whole app
         var appView = new AppView({model: app});

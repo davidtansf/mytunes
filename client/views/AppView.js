@@ -18,6 +18,7 @@ var AppView = Backbone.View.extend({
       this.playerView.$el,
       this.libraryView.$el,
       this.songQueueView.$el
+
     ]);
   }
 

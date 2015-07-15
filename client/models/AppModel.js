@@ -13,12 +13,16 @@ var AppModel = Backbone.Model.extend({
     getting called from the window (unless we override it, as we do here). */
 
 
-    params.library.on('play', function(song){
+    params.library.on('play', function(song){ // needs to be params.library
       this.set('currentSong', song);
     }, this);
 
-    params.library.on('enqueue', function(song) {
+    params.library.on('enqueue', function(song) {  // seems like this is not needed, why can't SongModel talk to Song Queue directly, ie. change @enqueue: function(){ this.trigger('play', this);}@ to go directly to SongQueue
       this.get('songQueue').add(song);
+    }, this);
+
+    this.get('songQueue').on('stop', function(){
+      this.set('currentSong', null);
     }, this);
 
   }
