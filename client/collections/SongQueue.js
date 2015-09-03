@@ -9,6 +9,7 @@ var SongQueue = Songs.extend({
   },
 
   enqueue: function(song) {
+    console.log('SongQueue: enqueue');
     if (this.length === 1) {
       this.playFirst();
     }
@@ -27,12 +28,14 @@ var SongQueue = Songs.extend({
     if (this.length >= 1) {
       this.playFirst();
     } else {
-      this.trigger('stop'); // why is this not (this.trigger('stop', this))?
+      this.trigger('stop');
     }
   },
 
   playFirst: function() {
-    this.at(0).play(); // seems to mimic LibraryEntryView code, but SongQueue is a collection (of a model) and not a view, so why is this not an event emitter instead, like in AppModel.js, eg. this.set('currentSong', song);???
+    console.log('SongQueue: playFirst(1)');
+    this.at(0).play();
+    console.log('SongQueue: playFirst(2)');
   }
 
 });

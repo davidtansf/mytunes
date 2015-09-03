@@ -11,6 +11,7 @@ var PlayerView = Backbone.View.extend({
 
   setSong: function(song){
     this.model = song
+    console.log("PlayerView: play song");
     if(!this.model) {
       this.el.pause();
     }
